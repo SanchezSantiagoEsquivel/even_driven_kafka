@@ -10,12 +10,9 @@ producer_config = {
 producer = Producer(producer_config)
 
 greetings = [
-    "🐍 Hola 🐍", 
-    "🐍 Buenos días 🐍", 
-    "🐍 Buenas tardes 🐍", 
-    "🐍 Buenas noches 🐍", 
-    "🐍 ¿Cómo estás? 🐍", 
-    "🐍 ¡Qué tal! 🐍"
+    "Hola 👋🏽", 
+    "Soy Luis 🧑🏽‍🦱", 
+    "Qué tal va el dia? 🙆🏾", 
 ]
 
 def send_random_greeting():

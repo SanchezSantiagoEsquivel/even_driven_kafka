@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: santi-kafka-producer
+  name: luis-kafka-producer
   labels:
-    app: santi-kafka-producer
+    app: luis-kafka-producer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: santi-kafka-producer
+      app: luis-kafka-producer
   template:
     metadata:
       labels:
-        app: santi-kafka-producer
+        app: luis-kafka-producer
     spec:
       containers:
-        - name: santi-kafka-producer
-          image: santiagosanchez03/santiago_greetings
+        - name: luis-kafka-producer
+          image: luisgabriel/luis-greetings:latest
           env:
             - name: BOOTSTRAP_SERVERS
-              value: "kafka-broker:9092"
+              value: "kafka-broker:9092" 
             - name: TOPIC_NAME
-              value: "univalle-ideas"
+              value: "luis-greetings-topic" 
           ports:
             - containerPort: 9092
           command: ["python"]
@@ -38,9 +38,9 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: santi-kafka-producer-config
+  name: luis-kafka-producer-config
   labels:
-    app: santi-kafka-producer
+    app: luis-kafka-producer
 data:
   BOOTSTRAP_SERVERS: "kafka-broker:9092"
-  TOPIC_NAME: "univalle-ideas"
+  TOPIC_NAME: "luis-greetings-topic"
