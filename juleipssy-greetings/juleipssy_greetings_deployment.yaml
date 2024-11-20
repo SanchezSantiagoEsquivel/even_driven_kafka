@@ -19,9 +19,9 @@ spec:
           image: juleipssy/juleipssy-greetings:latest
           env:
             - name: BOOTSTRAP_SERVERS
-              value: "kafka-broker:9092"
+              value: "kafka-broker:9092" 
             - name: TOPIC_NAME
-              value: "juleipssy-greetings-topics"
+              value: "july-greetings-topic" 
           ports:
             - containerPort: 9092
           command: ["python"]
@@ -43,4 +43,4 @@ metadata:
     app: july-kafka-producer
 data:
   BOOTSTRAP_SERVERS: "kafka-broker:9092"
-  TOPIC_NAME: "juleipssy-greetings-topics"
+  TOPIC_NAME: "july-greetings-topic"
