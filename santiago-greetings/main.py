@@ -3,9 +3,8 @@ import random
 from confluent_kafka import Producer
 
 producer_config = {
-    'bootstrap.servers': 'host.docker.internal:9092',  
+    'bootstrap.servers': 'kafka-broker:9092',  
     'client.id': 'auth-service',  
-    'broker.address.family': 'v4',         
 }
 
 producer = Producer(producer_config)

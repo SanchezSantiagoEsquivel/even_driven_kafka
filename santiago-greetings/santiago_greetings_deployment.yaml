@@ -19,7 +19,7 @@ spec:
           image: santiagosanchez03/santiago_greetings
           env:
             - name: BOOTSTRAP_SERVERS
-              value: "host.docker.internal:9092"
+              value: "kafka-broker:9092"
             - name: TOPIC_NAME
               value: "univalle-ideas"
           ports:
@@ -42,5 +42,5 @@ metadata:
   labels:
     app: santi-kafka-producer
 data:
-  BOOTSTRAP_SERVERS: "host.docker.internal:9092"
+  BOOTSTRAP_SERVERS: "kafka-broker:9092"
   TOPIC_NAME: "univalle-ideas"
