@@ -62,7 +62,7 @@ spec:
     spec:
       containers:
         - name: lenin-kafka-producer
-          image: leninecm/lenin-greetings
+          image: leninecm/lenin-greetings:latest
           env:
             - name: BOOTSTRAP_SERVERS
               value: "kafka-broker:9092"
