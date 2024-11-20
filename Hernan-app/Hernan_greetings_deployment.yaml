@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
         - name: hernan-kafka-producer
-          image: herdavid/hernan-greetings:latest 
+          image: herdavid/hernan-greetings:latest
           env:
             - name: BOOTSTRAP_SERVERS
-              value: "kafka-broker:9092"
+              value: "kafka-broker:9092" 
             - name: TOPIC_NAME
-              value: "univalle-ideas"
+              value: "hernan-greetings-topic" 
           ports:
             - containerPort: 9092
           command: ["python"]
@@ -43,4 +43,4 @@ metadata:
     app: hernan-kafka-producer
 data:
   BOOTSTRAP_SERVERS: "kafka-broker:9092"
-  TOPIC_NAME: "univalle-ideas"
+  TOPIC_NAME: "hernan-greetings-topic"

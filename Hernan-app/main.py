@@ -12,7 +12,7 @@ producer = Producer(producer_config)
 
 # Mensajes personalizados
 messages = [
-    "👋 ¡Hola desde mi microservicio! 👋",
+    "👋 ¡Hola, soy Hernan, estoy desde mi microservicio! 👋",
     "🎉 ¡Microservicio activo! 🎉",
     "🚀 Kafka es genial 🚀",
     "📡 Mensaje desde Kubernetes 📡",
