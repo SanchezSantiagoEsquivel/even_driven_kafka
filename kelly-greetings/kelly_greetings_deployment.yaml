@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
         - name: kelly-kafka-producer
-          image: kellyquintana0924/kelly-greetings:1.0.0
+          image: kellyquintana0924/kelly-greetings:1.0.2
           env:
             - name: BOOTSTRAP_SERVERS
               value: "kafka-broker:9092" 
             - name: TOPIC_NAME
-              value: "univalle-ideas" 
+              value: "kelly-greetings-topic" 
           ports:
             - containerPort: 9092
           command: ["python"]
@@ -43,4 +43,4 @@ metadata:
     app: kelly-kafka-producer
 data:
   BOOTSTRAP_SERVERS: "kafka-broker:9092"
-  TOPIC_NAME: "univalle-ideas"
+  TOPIC_NAME: "kelly-greetings-topic"
