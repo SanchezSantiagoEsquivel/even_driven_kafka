@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: july-kafka-producer
+  labels:
+    app: july-kafka-producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: july-kafka-producer
+  template:
+    metadata:
+      labels:
+        app: july-kafka-producer
+    spec:
+      containers:
+        - name: july-kafka-producer
+          image: juleipssy/juleipssy-greetings:latest
+          env:
+            - name: BOOTSTRAP_SERVERS
+              value: "kafka-broker:9092"
+            - name: TOPIC_NAME
+              value: "juleipssy-greetings-topics"
+          ports:
+            - containerPort: 9092
+          command: ["python"]
+          args: ["main.py"]
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: july-kafka-producer-config
+  labels:
+    app: july-kafka-producer
+data:
+  BOOTSTRAP_SERVERS: "kafka-broker:9092"
+  TOPIC_NAME: "juleipssy-greetings-topics"
