@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-consumer-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer-consumer
+  template:
+    metadata:
+      labels:
+        app: customer-consumer
+    spec:
+      containers:
+      - name: customer-consumer
+        image: santiagosanchez03/test_consumer
+        ports:
+        - containerPort: 3000
+        env:
+        - name: KAFKA_BROKERS
+          value: "kafka-broker:9092"
+        - name: KAFKA_TOPIC
+          value: "univalle-ideas"
+        - name: KAFKA_GROUP_ID
+          value: "test-group"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-consumer-service
+spec:
+  selector:
+    app: customer-consumer
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: ClusterIP
