@@ -7,19 +7,19 @@ producer_config = {
     'client.id': 'auth-service',  
 }
 
-messages = [
-    "¡Lenin was here! 🗣️",
-    "Casi que no me funciona Kafka, mano ✉️",
-    "Saludos desde el servicio de mensajería, Lenin 🚀",
-    "Esperamos que tengas un gran día, Lenin ☀️",
-    "Esto es solo una prueba, Lenin 🔧",
-    "Kafka funcionando perfectamente, Lenin ✔️"
+producer = Producer(producer_config)
+
+greetings = [
+    "👺 Lenin 👹", 
+    "🤓 was 🤖", 
+    "😒 here! 😶‍🌫️", 
+
 ]
 
-def send_random_message():
+def send_random_greeting():
     try:
         while True:
-            message = random.choice(messages)
+            message = random.choice(greetings)
             
             producer.produce('univalle-ideas', key=None, value=message)
             print(f"Enviado: {message}")
@@ -33,4 +33,6 @@ def send_random_message():
     except Exception as error:
         print(f"Error al enviar mensaje a Kafka: {error}")
 
-send_random_message()
+send_random_greeting()
+
+

@@ -1,17 +1,33 @@
 {
   
     "name": "auth-service",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "start": "node server.js"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "kafkajs": "^2.2.4"
-    }
-  }
   
+    "version": "1.0.0",
+  
+    "description": "",
+  
+    "main": "index.js",
+  
+    "scripts": {
+  
+      
+    "start": "node server.js"
+  
+    },
+  
+    "keywords": [],
+  
+    "author": "",
+  
+    "license": "ISC",
+  
+    "dependencies": {
+  
+      
+    "auth-service": "file:",
+  
+      
+    "kafkajs": "^2.2.4"
+  
+    }
+}
