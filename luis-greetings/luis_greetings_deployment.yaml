@@ -16,14 +16,14 @@ spec:
     spec:
       containers:
         - name: luis-kafka-producer
-          image: luisgabriel/luis-greetings:latest # Reemplaza con la imagen que subiste
+          image: luisgabriel/luis-greetings:latest
           env:
             - name: BOOTSTRAP_SERVERS
-              value: "kafka-broker:9092" # Dirección del Kafka Broker
+              value: "kafka-broker:9092" 
             - name: TOPIC_NAME
-              value: "luis-greetings-topic" # Nombre del topic para este producer
+              value: "luis-greetings-topic" 
           ports:
-            - containerPort: 9092 # Puerto (puede variar según tu app)
+            - containerPort: 9092
           command: ["python"]
           args: ["main.py"]
           resources:
