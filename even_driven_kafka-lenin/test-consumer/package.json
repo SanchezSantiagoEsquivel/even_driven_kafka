@@ -1,0 +1,16 @@
+{
+    "name": "test-consumer",
+    "version": "1.0.0",
+    "description": "",
+    "main": "consumer.js",
+    "scripts": {
+        "start": "node consumer.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "kafkajs": "^2.2.4",
+        "test-consumer": "file:"
+    }
+}

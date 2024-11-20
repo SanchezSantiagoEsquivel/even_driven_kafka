@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eyder-kafka-producer
+  labels:
+    app: eyder-kafka-producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eyder-kafka-producer
+  template:
+    metadata:
+      labels:
+        app: eyder-kafka-producer
+    spec:
+      containers:
+        - name: eyder-kafka-producer
+          image: eydersantiago/eyder-frutall:latest
+          env:
+            - name: BOOTSTRAP_SERVERS
+              value: "kafka-broker:9092" 
+            - name: TOPIC_NAME
+              value: "eyder-greetings-topic" 
+          ports:
+            - containerPort: 9092
+          command: ["python"]
+          args: ["main.py"]
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: eyder-kafka-producer-config
+  labels:
+    app: eyder-kafka-producer
+data:
+  BOOTSTRAP_SERVERS: "kafka-broker:9092"
+  TOPIC_NAME: "eyder-greetings-topic"
