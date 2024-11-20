@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: luis-kafka-producer
+  labels:
+    app: luis-kafka-producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: luis-kafka-producer
+  template:
+    metadata:
+      labels:
+        app: luis-kafka-producer
+    spec:
+      containers:
+        - name: luis-kafka-producer
+          image: luisgabriel/luis-greetings:latest # Reemplaza con la imagen que subiste
+          env:
+            - name: BOOTSTRAP_SERVERS
+              value: "kafka-broker:9092" # Dirección del Kafka Broker
+            - name: TOPIC_NAME
+              value: "luis-greetings-topic" # Nombre del topic para este producer
+          ports:
+            - containerPort: 9092 # Puerto (puede variar según tu app)
+          command: ["python"]
+          args: ["main.py"]
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: luis-kafka-producer-config
+  labels:
+    app: luis-kafka-producer
+data:
+  BOOTSTRAP_SERVERS: "kafka-broker:9092"
+  TOPIC_NAME: "luis-greetings-topic"
