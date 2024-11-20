@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: eyder-kafka-producer
-          image: eydersantiago/eyder-frutasss:latest
+          image: eydersantiago/eyder-frutall:latest
           env:
             - name: BOOTSTRAP_SERVERS
               value: "kafka-broker:9092" 
